@@ -1,5 +1,6 @@
 package bootstrap.conductor.reference.service;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,6 +25,7 @@ public class WorkFlowService {
 
 	@Autowired
 	ConductorServerProvider conductorServerProvider;
+	public static Logger logger = org.slf4j.LoggerFactory.getLogger(WorkFlowService.class);
 
 	@RequestMapping(method = RequestMethod.PUT, value = "/workflows")
 	public void createWorkFlow() {
