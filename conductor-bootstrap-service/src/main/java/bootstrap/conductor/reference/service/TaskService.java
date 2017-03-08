@@ -46,10 +46,10 @@ public class TaskService {
 		// return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
 	}
 
-	@RequestMapping(method = RequestMethod.GET, value = "/api/swagger-ui")
-	public String swaggerUi() {
-		logger.debug("insided swagger ui..");
-		return "redirect:swagger-ui.html";
+	@RequestMapping(method = RequestMethod.GET, value = "/taskDefs")
+	public String getTaskDefs() {
+
+		return conductorServerProvider.getTaskDefs().getBody();
 	}
 
 }
