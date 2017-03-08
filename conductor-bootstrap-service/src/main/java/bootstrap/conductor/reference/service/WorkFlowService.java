@@ -21,7 +21,7 @@ import bootstrap.conductor.reference.provider.ConductorServerProvider;
 public class WorkFlowService {
 
 	@Autowired
-	private static WorkflowClient wc;
+	private  WorkflowClient wc;
 
 	@Autowired
 	ConductorServerProvider conductorServerProvider;

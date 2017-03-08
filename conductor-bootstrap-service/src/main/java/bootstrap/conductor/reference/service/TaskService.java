@@ -24,7 +24,7 @@ import bootstrap.conductor.reference.provider.ConductorServerProvider;
 public class TaskService {
 
 	@Autowired
-	private static TaskClient tc;
+	private TaskClient tc;
 
 	@Autowired
 	ConductorServerProvider conductorServerProvider;
