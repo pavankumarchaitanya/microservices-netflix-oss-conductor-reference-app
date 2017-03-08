@@ -20,7 +20,7 @@ public class ConductorServerProvider {
 
 	public ResponseEntity<String> getTaskDefs() {
 
-		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/metadata/taskdefs",
+		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/api/metadata/taskdefs",
 				HttpMethod.GET, null, String.class);
 		logger.debug("response: " + response.getBody());
 		return response;
