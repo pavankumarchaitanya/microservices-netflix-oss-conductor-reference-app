@@ -1,5 +1,6 @@
 package bootstrap.conductor.reference.provider;
 
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,11 +16,14 @@ public class ConductorServerProvider {
 
 	@Autowired
 	RestTemplate restTemplate;
+	public static Logger logger = org.slf4j.LoggerFactory.getLogger(ConductorServerProvider.class);
 
 	public ResponseEntity<String> getTaskDefs() {
 
-		return restTemplate.exchange("http://localhost:8080/metadata/taskdefs", HttpMethod.GET, null, String.class);
-
+		ResponseEntity<String> response = restTemplate.exchange("http://localhost:8080/metadata/taskdefs",
+				HttpMethod.GET, null, String.class);
+		logger.debug("response: " + response.getBody());
+		return response;
 	}
 
 }
