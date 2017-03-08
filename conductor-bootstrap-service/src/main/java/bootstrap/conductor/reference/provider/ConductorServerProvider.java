@@ -18,7 +18,7 @@ public class ConductorServerProvider {
 
 	public ResponseEntity<String> getTaskDefs() {
 
-		return restTemplate.exchange("localhost:8080/metadata/taskdefs", HttpMethod.GET, null, String.class);
+		return restTemplate.exchange("http://localhost:8080/metadata/taskdefs", HttpMethod.GET, null, String.class);
 
 	}
 
