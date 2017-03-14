@@ -1,4 +1,4 @@
-package workflow.initiator.conductor.reference.provider;
+package bootstrap.conductor.reference.provider;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package workflow.initiator.conductor.reference.service;
+package bootstrap.conductor.reference.service;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import com.netflix.conductor.common.metadata.workflow.WorkflowDef;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask.Type;
 
-import workflow.initiator.conductor.reference.provider.ConductorServerProvider;
+import bootstrap.conductor.reference.provider.ConductorServerProvider;
 
 /*
  * @author Pavan Kumar Chaitanya Landa

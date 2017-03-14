@@ -1,4 +1,4 @@
-package workflow.initiator.conductor.reference;
+package bootstrap.conductor.reference;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
