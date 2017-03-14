@@ -11,6 +11,7 @@ import com.netflix.conductor.common.metadata.workflow.WorkflowDef;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask.Type;
 
+import notification.reference.model.Notification;
 import notification.reference.provider.ConductorServerProvider;
 
 /*
@@ -18,17 +19,17 @@ import notification.reference.provider.ConductorServerProvider;
  * 
  */
 @RestController
-public class WorkFlowService {
+public class NotificationService {
 
 	@Autowired
 	private  WorkflowClient wc;
 
 	@Autowired
 	ConductorServerProvider conductorServerProvider;
-	public static Logger logger = org.slf4j.LoggerFactory.getLogger(WorkFlowService.class);
+	public static Logger logger = org.slf4j.LoggerFactory.getLogger(NotificationService.class);
 
-	@RequestMapping(method = RequestMethod.PUT, value = "/workflows")
-	public void createWorkFlow() {
+	@RequestMapping(method = RequestMethod.POST, value = "/notifications")
+	public void sendNotification(Notification notification) {
 		WorkflowDef def = new WorkflowDef();
 		def.setName("test");
 		WorkflowTask t0 = new WorkflowTask();
