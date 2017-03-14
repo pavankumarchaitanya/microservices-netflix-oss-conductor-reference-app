@@ -1,4 +1,4 @@
-package bootstrap.conductor.reference.service;
+package notification.reference.service;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import com.netflix.conductor.common.metadata.workflow.WorkflowDef;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask;
 import com.netflix.conductor.common.metadata.workflow.WorkflowTask.Type;
 
-import bootstrap.conductor.reference.provider.ConductorServerProvider;
+import notification.reference.provider.ConductorServerProvider;
 
 /*
  * @author Pavan Kumar Chaitanya Landa

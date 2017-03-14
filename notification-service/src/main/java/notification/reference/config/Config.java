@@ -1,4 +1,4 @@
-package bootstrap.conductor.reference.config;
+package notification.reference.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package bootstrap.conductor.reference.service;
+package notification.reference.service;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -14,7 +14,7 @@ import com.netflix.conductor.client.http.TaskClient;
 import com.netflix.conductor.common.metadata.tasks.TaskDef;
 import com.netflix.conductor.common.metadata.tasks.TaskDef.TimeoutPolicy;
 
-import bootstrap.conductor.reference.provider.ConductorServerProvider;
+import notification.reference.provider.ConductorServerProvider;
 
 /*
  * @author Pavan Kumar Chaitanya Landa
