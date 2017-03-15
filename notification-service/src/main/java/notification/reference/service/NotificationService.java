@@ -2,17 +2,18 @@ package notification.reference.service;
 
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.netflix.conductor.client.http.WorkflowClient;
-import com.netflix.conductor.common.metadata.workflow.WorkflowDef;
-import com.netflix.conductor.common.metadata.workflow.WorkflowTask;
-import com.netflix.conductor.common.metadata.workflow.WorkflowTask.Type;
 
+import notification.reference.exception.ProcessorException;
 import notification.reference.model.Notification;
-import notification.reference.provider.ConductorServerProvider;
+import notification.reference.processor.NotificationProcessor;
 
 /*
  * @author Pavan Kumar Chaitanya Landa
@@ -21,32 +22,30 @@ import notification.reference.provider.ConductorServerProvider;
 @RestController
 public class NotificationService {
 
-	@Autowired
-	private  WorkflowClient wc;
+
 
 	@Autowired
-	ConductorServerProvider conductorServerProvider;
+	NotificationProcessor notificationProcessor;
+
 	public static Logger logger = org.slf4j.LoggerFactory.getLogger(NotificationService.class);
 
 	@RequestMapping(method = RequestMethod.POST, value = "/notifications")
-	public void sendNotification(Notification notification) {
-		WorkflowDef def = new WorkflowDef();
-		def.setName("test");
-		WorkflowTask t0 = new WorkflowTask();
-		t0.setName("t0");
-		t0.setWorkflowTaskType(Type.SIMPLE);
-		t0.setTaskReferenceName("t0");
+	public ResponseEntity<?> sendNotification(
+			@RequestParam(required = true, name = "notification") Notification notification) {
+		ResponseEntity<?> responseEntity = null;
+		try {
+			notificationProcessor.validateNotification(notification);
 
-		WorkflowTask t1 = new WorkflowTask();
-		t1.setName("t1");
-		t1.setWorkflowTaskType(Type.SIMPLE);
-		t1.setTaskReferenceName("t1");
+			notificationProcessor.processNotification(notification);
+		} catch (ProcessorException pe) {
+			responseEntity = new ResponseEntity<>("Error processing notification", HttpStatus.INTERNAL_SERVER_ERROR);
+			return responseEntity;
+		}
 
-		def.getTasks().add(t0);
-		def.getTasks().add(t1);
-
-		wc.registerWorkflow(def);
+		responseEntity = new ResponseEntity<>(HttpStatus.OK);
+		return responseEntity;
 		// return new ResponseEntity<Greeting>(greeting, HttpStatus.OK);
+
 	}
 
 }
