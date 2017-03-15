@@ -1,5 +1,8 @@
 package notification.reference.provider;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -39,7 +42,9 @@ public class NotificationWorkflowProvider implements NotificationProvider {
 	 */
 	@Override
 	public void publishNotification(Notification notification) {
-		wc.startWorkflow(name, version, notification.getUserID(), notification);
+		Map<String, Object> inputParamMap = new HashMap<>();
+		inputParamMap.put("notification", notification);
+		wc.startWorkflow("kitchensink", 1, notification.getUserID(), inputParamMap);
 	}
 
 }
