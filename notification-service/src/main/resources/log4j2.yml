@@ -13,7 +13,7 @@ Configuration:
       AppenderRef:
         ref: Console
     Logger:
-      name: conductor.reference
+      name: notification.reference
       additivity: false
       level: debug
       AppenderRef:
