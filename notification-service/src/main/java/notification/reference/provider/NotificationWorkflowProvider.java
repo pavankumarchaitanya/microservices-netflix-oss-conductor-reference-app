@@ -42,9 +42,13 @@ public class NotificationWorkflowProvider implements NotificationProvider {
 	 */
 	@Override
 	public void publishNotification(Notification notification) {
+		logger.debug("Inside publishNotification [{}]", notification);
 		Map<String, Object> inputParamMap = new HashMap<>();
 		inputParamMap.put("notification", notification);
+		logger.debug("[{}]Starting workflow..", notification.getUserID());
 		wc.startWorkflow("kitchensink", 1, notification.getUserID(), inputParamMap);
+		logger.debug("[{}]Workflow invocation complete..", notification.getUserID());
+
 	}
 
 }
