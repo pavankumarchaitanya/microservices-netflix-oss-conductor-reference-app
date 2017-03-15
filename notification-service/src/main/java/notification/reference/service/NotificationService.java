@@ -7,10 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.netflix.conductor.client.http.WorkflowClient;
 
 import notification.reference.exception.ProcessorException;
 import notification.reference.model.Notification;
@@ -29,8 +26,8 @@ public class NotificationService {
 	public static Logger logger = org.slf4j.LoggerFactory.getLogger(NotificationService.class);
 
 	@RequestMapping(method = RequestMethod.POST, value = "/notifications")
-	public ResponseEntity<?> sendNotification(
-			@RequestBody(required = true) Notification notification) {
+	public ResponseEntity<?> sendNotification(@RequestBody(required = true) Notification notification) {
+		logger.debug("Received notification : [{}]", notification);
 		ResponseEntity<?> responseEntity = null;
 		try {
 			notificationProcessor.validateNotification(notification);
