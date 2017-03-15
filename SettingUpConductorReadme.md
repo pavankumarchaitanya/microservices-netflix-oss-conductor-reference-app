@@ -1,4 +1,4 @@
-hoose ubuntu 14: 
+Choose ubuntu 14: 
 
 sudo passwd
 su root
