@@ -49,6 +49,13 @@
 			<artifactId>springfox-swagger2</artifactId>
 			<version>RELEASE</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/uk.co.jemos.podam/podam -->
+		<dependency>
+			<groupId>uk.co.jemos.podam</groupId>
+			<artifactId>podam</artifactId>
+			<version>RELEASE</version>
+		</dependency>
+
 
 	</dependencies>
 

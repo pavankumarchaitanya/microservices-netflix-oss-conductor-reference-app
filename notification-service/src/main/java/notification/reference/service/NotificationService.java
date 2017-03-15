@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,8 +23,6 @@ import notification.reference.processor.NotificationProcessor;
 @RestController
 public class NotificationService {
 
-
-
 	@Autowired
 	NotificationProcessor notificationProcessor;
 
@@ -31,7 +30,7 @@ public class NotificationService {
 
 	@RequestMapping(method = RequestMethod.POST, value = "/notifications")
 	public ResponseEntity<?> sendNotification(
-			@RequestParam(required = true, name = "notification") Notification notification) {
+			@RequestBody(required = true) Notification notification) {
 		ResponseEntity<?> responseEntity = null;
 		try {
 			notificationProcessor.validateNotification(notification);
