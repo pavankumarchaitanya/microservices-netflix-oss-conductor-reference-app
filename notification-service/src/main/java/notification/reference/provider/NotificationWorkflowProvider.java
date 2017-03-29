@@ -12,7 +12,10 @@ import org.springframework.web.client.RestTemplate;
 
 import com.netflix.conductor.client.http.WorkflowClient;
 
+import notification.reference.model.EmailNotification;
 import notification.reference.model.Notification;
+import notification.reference.model.SMSNotification;
+import notification.reference.model.WebhookNotification;
 
 /*
  * @author Pavan Kumar Chaitanya Landa
@@ -49,6 +52,24 @@ public class NotificationWorkflowProvider implements NotificationProvider {
 		wc.startWorkflow("kitchensink", 1, notification.getUserID(), inputParamMap);
 		logger.debug("[{}]Workflow invocation complete..", notification.getUserID());
 
+	}
+
+	@Override
+	public void publishSMSNotification(SMSNotification smsNotification) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void publishEmailNotification(EmailNotification smsNotification) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void publishWebhookNotification(WebhookNotification smsNotification) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

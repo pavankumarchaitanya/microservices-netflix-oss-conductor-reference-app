@@ -53,5 +53,5 @@ curl -O http://archive.apache.org/dist/tomcat/tomcat-9/v9.0.0.M1/src/apache-tomc
  npm install
  npm run watch
 
- ui : http://104.198.150.92:3000
- server : http://104.198.150.92:8080/api/metadata/taskdefs
+ ui : http://localhost:3000
+ server : http://localhost:8080/api/metadata/taskdefs
